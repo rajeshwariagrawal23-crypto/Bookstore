@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BookStore - Catalogue</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="page"><div class="panel">
+  <div class="main-layout">
+    <aside class="sidebar">
+      <h2>Categories</h2>
+      <a class="category" href="#cse">CSE</a>
+      <a class="category" href="#ece">ECE</a>
+      <a class="category" href="#eee">EEE</a>
+      <a class="category" href="#civil">CIVIL</a>
+    </aside>
+    <main class="content">
+      <h2>Catalogue</h2>
+      <p>Book details include cover, author, publisher, Indian price and Add to Cart.</p>
+      <div id="cartMessage" class="success"></div>
+      <table class="catalogue-table">
+        <thead>
+          <tr>
+            <th>Cover Page</th><th>Book / Author / Publisher</th><th>Price</th><th>Add to Cart</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr id="cse">
+            <td><img class="book-cover" src="assets/books/xml-bible.svg" alt="XML Bible cover"></td>
+            <td><strong>Book: XML Bible</strong><br>Author: Winston<br>Publication: Wiley</td>
+            <td class="price">₹349</td>
+            <td><button class="add-cart" onclick="addToCart('xml-bible')">🛒 Add to cart</button></td>
+          </tr>
+          <tr>
+            <td><img class="book-cover" src="assets/books/ai.svg" alt="AI book cover"></td>
+            <td><strong>Book: Artificial Intelligence</strong><br>Author: S. Russell &amp; P. Norvig<br>Publication: Pearson</td>
+            <td class="price">₹899</td>
+            <td><button class="add-cart" onclick="addToCart('ai')">🛒 Add to cart</button></td>
+          </tr>
+          <tr id="ece">
+            <td><img class="book-cover" src="assets/books/java-2.svg" alt="Java 2 cover"></td>
+            <td><strong>Book: Java 2</strong><br>Author: Watson<br>Publication: BPB Publications</td>
+            <td class="price">₹599</td>
+            <td><button class="add-cart" onclick="addToCart('java-2')">🛒 Add to cart</button></td>
+          </tr>
+          <tr id="eee">
+            <td><img class="book-cover" src="assets/books/html-24.svg" alt="HTML in 24 Hours cover"></td>
+            <td><strong>Book: HTML in 24 Hours</strong><br>Author: Sam Peter<br>Publication: SAM Publications</td>
+            <td class="price">₹449</td>
+            <td><button class="add-cart" onclick="addToCart('html-24')">🛒 Add to cart</button></td>
+          </tr>
+          <tr id="civil">
+            <td><img class="book-cover" src="assets/books/dbms.svg" alt="DBMS cover"></td>
+            <td><strong>Book: Database Management Systems</strong><br>Author: Raghu Ramakrishnan<br>Publication: McGraw Hill</td>
+            <td class="price">₹699</td>
+            <td><button class="add-cart" onclick="addToCart('dbms')">🛒 Add to cart</button></td>
+          </tr>
+          <tr>
+            <td><img class="book-cover" src="assets/books/python.svg" alt="Python Programming cover"></td>
+            <td><strong>Book: Python Programming</strong><br>Author: Reema Thareja<br>Publication: Oxford</td>
+            <td class="price">₹649</td>
+            <td><button class="add-cart" onclick="addToCart('python')">🛒 Add to cart</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+  </div>
+</div></div>
+<script src="js/cart.js"></script>
+</body>
+</html>

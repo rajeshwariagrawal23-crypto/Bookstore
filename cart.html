@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BookStore - Cart</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="page"><div class="panel">
+  <div class="main-layout">
+    <aside class="sidebar">
+      <h2>Categories</h2>
+      <a class="category" href="catalogue.html#cse">CSE</a>
+      <a class="category" href="catalogue.html#ece">ECE</a>
+      <a class="category" href="catalogue.html#eee">EEE</a>
+      <a class="category" href="catalogue.html#civil">CIVIL</a>
+    </aside>
+    <main class="content">
+      <h2>Cart Page</h2>
+      <table class="cart-table">
+        <thead>
+          <tr><th>Book Name</th><th>Price</th><th>Quantity</th><th>Amount</th><th>Action</th></tr>
+        </thead>
+        <tbody id="cartBody"></tbody>
+      </table>
+      <div class="cart-total">Total Amount: <span id="cartTotal" style="margin-left:10px">₹0</span></div>
+      <div class="actions"><a class="btn" href="catalogue.html">Continue Shopping</a></div>
+    </main>
+  </div>
+</div></div>
+<script src="js/cart.js"></script>
+</body>
+</html>

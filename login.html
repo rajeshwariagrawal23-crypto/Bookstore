@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BookStore - Login</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="page"><div class="panel">
+  <div class="main-layout">
+    <aside class="sidebar">
+      <h2>Categories</h2>
+      <a class="category" href="catalogue.html#cse">CSE</a>
+      <a class="category" href="catalogue.html#ece">ECE</a>
+      <a class="category" href="catalogue.html#eee">EEE</a>
+      <a class="category" href="catalogue.html#civil">CIVIL</a>
+    </aside>
+    <main class="content">
+      <div class="form-wrap">
+        <h2>Login Page</h2>
+        <form onsubmit="return validateLogin(event)">
+          <div class="form-row">
+            <label for="loginUser">User Name:</label>
+            <input id="loginUser" type="text" autocomplete="username">
+          </div>
+          <div class="form-row">
+            <label for="loginPassword">Password:</label>
+            <input id="loginPassword" type="password" autocomplete="current-password">
+          </div>
+          <div class="actions">
+            <button class="btn" type="submit">Submit</button>
+            <button class="btn secondary" type="reset">Reset</button>
+          </div>
+          <p id="loginMessage" style="text-align:center;font-weight:700"></p>
+        </form>
+      </div>
+    </main>
+  </div>
+</div></div>
+<script src="js/validation.js"></script>
+</body>
+</html>

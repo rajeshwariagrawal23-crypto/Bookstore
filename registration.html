@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BookStore - Registration</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="page"><div class="panel">
+  <div class="main-layout">
+    <aside class="sidebar">
+      <h2>Categories</h2>
+      <a class="category" href="catalogue.html#cse">CSE</a>
+      <a class="category" href="catalogue.html#ece">ECE</a>
+      <a class="category" href="catalogue.html#eee">EEE</a>
+      <a class="category" href="catalogue.html#civil">CIVIL</a>
+    </aside>
+    <main class="content">
+      <div class="form-wrap">
+        <h2>Registration Page</h2>
+        <form onsubmit="return validateRegistration(event)">
+          <div class="form-row">
+            <label for="name">Name:</label>
+            <div><input id="name" type="text"><p id="nameError" class="error"></p></div>
+          </div>
+          <div class="form-row">
+            <label for="password">Password:</label>
+            <div><input id="password" type="password"><p id="passwordError" class="error"></p></div>
+          </div>
+          <div class="form-row">
+            <label for="email">E-mail ID:</label>
+            <div><input id="email" type="text" placeholder="name@domain.com"><p id="emailError" class="error"></p></div>
+          </div>
+          <div class="form-row">
+            <label for="phone">Phone Number:</label>
+            <div><input id="phone" type="text" inputmode="numeric" maxlength="10"><p id="phoneError" class="error"></p></div>
+          </div>
+          <div class="form-row">
+            <label>Sex:</label>
+            <div class="inline">
+              <label><input type="radio" name="sex" value="Male"> Male</label>
+              <label><input type="radio" name="sex" value="Female"> Female</label>
+              <label><input type="radio" name="sex" value="Other"> Other</label>
+            </div>
+          </div>
+          <div class="form-row">
+            <label>Date of Birth:</label>
+            <div class="inline">
+              <select aria-label="Day"><option>Day</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+              <select aria-label="Month"><option>Month</option><option>January</option><option>February</option><option>March</option><option>April</option><option>May</option><option>June</option><option>July</option><option>August</option><option>September</option><option>October</option><option>November</option><option>December</option></select>
+              <select aria-label="Year"><option>Year</option><option>2000</option><option>2001</option><option>2002</option><option>2003</option><option>2004</option><option>2005</option><option>2006</option><option>2007</option></select>
+            </div>
+          </div>
+          <div class="form-row">
+            <label>Languages Known:</label>
+            <div class="inline">
+              <label><input type="checkbox" name="language" value="English"> English</label>
+              <label><input type="checkbox" name="language" value="Telugu"> Telugu</label>
+              <label><input type="checkbox" name="language" value="Hindi"> Hindi</label>
+              <label><input type="checkbox" name="language" value="Tamil"> Tamil</label>
+            </div>
+          </div>
+          <div class="form-row">
+            <label for="address">Address:</label>
+            <textarea id="address" rows="4"></textarea>
+          </div>
+          <div class="actions">
+            <button class="btn" type="submit">Register</button>
+            <button class="btn secondary" type="reset">Reset</button>
+          </div>
+          <div id="registrationSuccess" class="success"></div>
+        </form>
+      </div>
+    </main>
+  </div>
+</div></div>
+<script src="js/validation.js"></script>
+</body>
+</html>
