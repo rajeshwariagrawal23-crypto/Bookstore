@@ -1,34 +1,78 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BookStore - Cart</title>
-<link rel="stylesheet" href="css/style.css">
+<title>Shopping Cart</title>
+<style>
+body {
+font-family: Arial;
+margin: 30px;
+}
+table {
+width: 80%;
+border-collapse: collapse;
+margin: auto;
+}
+th, td {
+border: 1px solid black;
+padding: 10px;
+text-align: center;
+}
+.heading {
+background-color: #6FA8D0;
+font-weight: bold;
+}
+.menu {
+background-color: #DCEBF7;
+}
+h1 {
+text-align: center;
+}
+</style>
 </head>
 <body>
-<div class="page"><div class="panel">
-  <div class="main-layout">
-    <aside class="sidebar">
-      <h2>Categories</h2>
-      <a class="category" href="catalogue.html#cse">CSE</a>
-      <a class="category" href="catalogue.html#ece">ECE</a>
-      <a class="category" href="catalogue.html#eee">EEE</a>
-      <a class="category" href="catalogue.html#civil">CIVIL</a>
-    </aside>
-    <main class="content">
-      <h2>Cart Page</h2>
-      <table class="cart-table">
-        <thead>
-          <tr><th>Book Name</th><th>Price</th><th>Quantity</th><th>Amount</th><th>Action</th></tr>
-        </thead>
-        <tbody id="cartBody"></tbody>
-      </table>
-      <div class="cart-total">Total Amount: <span id="cartTotal" style="margin-left:10px">₹0</span></div>
-      <div class="actions"><a class="btn" href="catalogue.html">Continue Shopping</a></div>
-    </main>
-  </div>
-</div></div>
-<script src="js/cart.js"></script>
+<h1>GL Bajaj Online Book Store</h1>
+<table>
+<!-- Top row -->
+<tr class="heading">
+<th>Logo</th>
+<th colspan="4">Web Site Name</th>
+</tr>
+<!-- Menu row -->
+<tr class="menu">
+<td>Home</td>
+<td>Login</td>
+<td>Registration</td>
+<td>Catalogue</td>
+<td>Cart</td>
+</tr>
+<!-- Books --><tr>
+<td rowspan="4">
+CSE<br><br>
+ECE<br><br>
+EEE<br><br>
+CIVIL
+</td>
+<th>Book name</th>
+<th>Price</th>
+<th>Quantity</th>
+<th>Amount</th>
+</tr>
+<tr>
+<td>Java 2</td>
+<td>$35.5</td>
+<td>2</td>
+<td>$70</td>
+</tr>
+<tr>
+<td>XML Bible</td>
+<td>$40.5</td>
+<td>1</td>
+<td>$40.5</td>
+</tr>
+<tr>
+<td colspan="3"><b>Total amount</b></td>
+<td><b>$110.5</b></td>
+</tr>
+</table>
 </body>
 </html>

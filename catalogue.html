@@ -1,73 +1,138 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BookStore - Catalogue</title>
-<link rel="stylesheet" href="css/style.css">
+<title>GL Bajaj Online Bookstore - Catalogue</title>
+<style>
+body {
+font-family: Arial, sans-serif;
+margin: 20px;
+}
+h1 {
+text-align: center;
+background-color: #6FA8D0;
+padding: 15px;
+border: 1px solid black;
+}
+table {
+width: 100%;
+border-collapse: collapse;
+}th, td {
+border: 1px solid black;
+padding: 12px;
+text-align: center;
+}
+th {
+background-color: #6FA8D0;
+}
+.menu {
+background-color: #DCEBF7;
+}
+.book {
+width: 100px;
+height: 130px;
+}
+.cart {
+background-color: #6FA8D0;
+border: 1px solid black;
+padding: 8px 15px;
+cursor: pointer;
+}
+.cart:hover {
+background-color: #1F4E6B;
+color: white;
+}
+a {
+color: black;
+text-decoration: none;
+}
+a:hover {
+color: blue;
+text-decoration: underline;
+}
+</style>
 </head>
 <body>
-<div class="page"><div class="panel">
-  <div class="main-layout">
-    <aside class="sidebar">
-      <h2>Categories</h2>
-      <a class="category" href="#cse">CSE</a>
-      <a class="category" href="#ece">ECE</a>
-      <a class="category" href="#eee">EEE</a>
-      <a class="category" href="#civil">CIVIL</a>
-    </aside>
-    <main class="content">
-      <h2>Catalogue</h2>
-      <p>Book details include cover, author, publisher, Indian price and Add to Cart.</p>
-      <div id="cartMessage" class="success"></div>
-      <table class="catalogue-table">
-        <thead>
-          <tr>
-            <th>Cover Page</th><th>Book / Author / Publisher</th><th>Price</th><th>Add to Cart</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr id="cse">
-            <td><img class="book-cover" src="assets/books/xml-bible.svg" alt="XML Bible cover"></td>
-            <td><strong>Book: XML Bible</strong><br>Author: Winston<br>Publication: Wiley</td>
-            <td class="price">₹349</td>
-            <td><button class="add-cart" onclick="addToCart('xml-bible')">🛒 Add to cart</button></td>
-          </tr>
-          <tr>
-            <td><img class="book-cover" src="assets/books/ai.svg" alt="AI book cover"></td>
-            <td><strong>Book: Artificial Intelligence</strong><br>Author: S. Russell &amp; P. Norvig<br>Publication: Pearson</td>
-            <td class="price">₹899</td>
-            <td><button class="add-cart" onclick="addToCart('ai')">🛒 Add to cart</button></td>
-          </tr>
-          <tr id="ece">
-            <td><img class="book-cover" src="assets/books/java-2.svg" alt="Java 2 cover"></td>
-            <td><strong>Book: Java 2</strong><br>Author: Watson<br>Publication: BPB Publications</td>
-            <td class="price">₹599</td>
-            <td><button class="add-cart" onclick="addToCart('java-2')">🛒 Add to cart</button></td>
-          </tr>
-          <tr id="eee">
-            <td><img class="book-cover" src="assets/books/html-24.svg" alt="HTML in 24 Hours cover"></td>
-            <td><strong>Book: HTML in 24 Hours</strong><br>Author: Sam Peter<br>Publication: SAM Publications</td>
-            <td class="price">₹449</td>
-            <td><button class="add-cart" onclick="addToCart('html-24')">🛒 Add to cart</button></td>
-          </tr>
-          <tr id="civil">
-            <td><img class="book-cover" src="assets/books/dbms.svg" alt="DBMS cover"></td>
-            <td><strong>Book: Database Management Systems</strong><br>Author: Raghu Ramakrishnan<br>Publication: McGraw Hill</td>
-            <td class="price">₹699</td>
-            <td><button class="add-cart" onclick="addToCart('dbms')">🛒 Add to cart</button></td>
-          </tr>
-          <tr>
-            <td><img class="book-cover" src="assets/books/python.svg" alt="Python Programming cover"></td>
-            <td><strong>Book: Python Programming</strong><br>Author: Reema Thareja<br>Publication: Oxford</td>
-            <td class="price">₹649</td>
-            <td><button class="add-cart" onclick="addToCart('python')">🛒 Add to cart</button></td>
-          </tr>
-        </tbody>
-      </table>
-    </main>
-  </div>
-</div></div>
-<script src="js/cart.js"></script>
+<h1>GL Bajaj Online Bookstore</h1>
+<table>
+<tr>
+<th colspan="5">ONLINE BOOKSTORE</th>
+</tr>
+<tr class="menu"><td><a href="exp1.html" target="_blank">Home</a></td>
+<td><a href="exp2.html" target="_blank">Login</a></td>
+<td><a href="exp5.html" target="_blank">Registration</a></td>
+<td><a href="exp3.html" target="_blank">Catalogue</a></td>
+<td><a href="exp4.html" target="_blank">Cart</a></td>
+</tr>
+<tr>
+<th>Book Cover</th>
+<th>Book Details</th>
+<th>Author</th>
+<th>Price</th>
+<th>Action</th>
+</tr>
+<tr>
+<td>
+<img class="book"
+src="assets/xml_bible.png"
+alt="XML Bible">
+</td>
+<td>
+<b>XML Bible</b><br>
+Publication: Wiley
+</td>
+<td>Winston</td>
+<td>$40.5</td>
+<td>
+<button class="cart">Add to Cart</button>
+</td>
+</tr>
+<tr>
+<td>
+<img class="book"
+src="assets/ai.png"
+alt="AI">
+</td>
+<td>
+<b>Artificial Intelligence</b><br>
+Publication: Prentice Hall
+</td>
+<td>S. Russell</td>
+<td>$63</td>
+<td>
+<button class="cart">Add to cart</button></td>
+</tr>
+<tr>
+<td>
+<img class="book"
+src="assets/java2.png"
+alt="Java 2">
+</td>
+<td>
+<b>Java 2</b><br>
+Publication: BPB Publications
+</td>
+<td>Watson</td>
+<td>$35.5</td>
+<td>
+<button class="cart">Add to Cart</button>
+</td>
+</tr>
+<tr>
+<td>
+<img class="book"
+src="assets/html24.png"
+alt="HTML in 24 Hours">
+</td>
+<td>
+<b>HTML in 24 Hours</b><br>
+Publication: Sams Publication
+</td>
+<td>Sam Peter</td>
+<td>$50</td>
+<td>
+<button class="cart">Add to Cart</button>
+</td>
+</tr>
+</table>
 </body>
 </html>

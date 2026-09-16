@@ -1,12 +1,229 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>BookStore</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GL BAJAJ Online Bookstore</title>
+  <style>
+    *{
+      box-sizing : border-box;
+    }
+  body{
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+  }
+  /* MAIN BORDER */
+  .main-container{
+    width: 100%;
+    min-height: 100vh;
+    border: 2px solid black;
+  }
+  /* TOP COLLEGE NAME */
+  .college-name{
+    height: 60px;
+    display: flex;
+    justify-content: ce;
+    align-items: center;
+    background-color: white;
+    border-bottom: 1px solid black;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  /* LOGO + BOOKSTORE AREA */
+  .bookstore-header{
+    height: 77px;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    background-color: (rgb(242, 193, 95));
+    border-bottom: 1px solid black;
+  }
+  .logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .logo-img{
+    width: auto;
+    height: 65px;
+    object-fit: contain;
+  }
+  .booksore-title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    columns: white;
+  } 
+  /* NAVIGATION */
+  .navigation{
+    height: 47px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    background-color: rgb(234, 179, 245);
+    border-bottom: 1px solid black;
+  }
+  .navigation a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    border-right: 1px solid black;
+    cursor: pointer;
+  }
+  .navigation a:last-child{
+    border-right: none;
+  }
+  .navigation a:hover{
+    background-color: rgb(201, 106, 249);
+  }
+  /* MAIN BODY */
+  .body-area {
+    display: grid;
+    grid-template-columns: 20% 80%;min-height: 428px;
+  }
+  /* LEFT SIDE */
+  .left-panel {
+    background-color: #DCEBF7;
+    border-right: 2px solid black;
+  }
+  .branch-link {
+    height: 56px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #aaa;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .branch-link a {
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  /* RIGHT SIDE */
+  .right-panel {
+    background-color: white;
+    position: relative;
+    overflow: auto;
+  }
+  /* HOME */
+  .home-content {
+    height: 428px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+  }
+/* PAGE IFRAME */
+#contentFrame {
+width: 100%;
+
+height: 100%;min-height: 428px;
+border: none;
+display: none;
+}
+</style>
 </head>
-<body class="frameset-page">
-  <iframe class="frame-top" src="top.html" title="Top navigation frame"></iframe>
-  <iframe class="frame-body" src="home.html" title="Main bookstore frame"></iframe>
+<body>
+  <div class="main-container">
+<!-- COLLEGE NAME -->
+<div class="college-name">
+GL Bajaj Institute of Technology and Management
+</div>
+<!-- LOGO + ONLINE BOOKSTORE -->
+<div class="bookstore-header">
+<div class="logo">
+<img
+src="assets/logo.png"
+alt="GL Bajaj Logo">
+</div>
+<div class="bookstore-title">
+ONLINE BOOKSTORE
+</div>
+</div>
+<!-- NAVIGATION -->
+<div class="navigation">
+<a href="#" onclick="showHome(); return false;">
+Home
+</a>
+<a href="login.html" onclick="openPage('login.html'); return false;">
+Login
+</a>
+<a href="registration.html" onclick="openPage('registration.html'); return false;">
+Registration
+</a>
+<a href="catalogue.html" onclick="openPage('catalogue.html'); return false;">
+Catalogue
+</a>
+<a href="cart.html" onclick="openPage('cart.html'); return false;">
+Cart</a>
+</div>
+<!-- BODY -->
+<div class="body-area">
+<!-- LEFT PANEL -->
+<div class="left-panel">
+<div class="branch-link">
+<a href="#" onclick="blankPage(); return false;">
+CSE
+</a>
+</div>
+<div class="branch-link">
+<a href="#" onclick="blankPage(); return false;">
+ECE
+</a>
+</div>
+<div class="branch-link">
+<a href="#" onclick="blankPage(); return false;">
+EEE
+</a>
+</div>
+<div class="branch-link">
+<a href="#" onclick="blankPage(); return false;">
+CIVIL
+</a>
+</div>
+</div>
+<!-- RIGHT PANEL -->
+ <div class="right-panel" id="rightPanel">
+<!-- HOME CONTENT -->
+<div id="homeContent" class="home-content">
+Description of the WebSite
+</div>
+<!-- OTHER PAGES LOAD HERE -->
+<iframe
+id="contentFrame"
+name="contentFrame">
+</iframe></div>
+</div>
+</div>
+<script>
+/* OPEN LOGIN / REGISTRATION / CATALOGUE / CART */
+function openPage(page) {
+document.getElementById("homeContent").style.display = "none";
+const frame = document.getElementById("contentFrame");
+frame.style.display = "block";
+frame.src = page;
+}
+/* HOME */
+function showHome() {
+const frame = document.getElementById("contentFrame");
+frame.style.display = "none";
+frame.src = "";
+document.getElementById("homeContent").style.display = "flex";
+}
+/* CSE / ECE / EEE / CIVIL */
+function blankPage() {
+const frame = document.getElementById("contentFrame");
+frame.style.display = "none";
+frame.src = "";
+document.getElementById("homeContent").style.display = "none";
+}
+</script>
 </body>
 </html>
