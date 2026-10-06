@@ -169,28 +169,26 @@ Cart</a>
 <!-- LEFT PANEL -->
 <div class="left-panel">
 <div class="branch-link">
-<a href="#" onclick="blankPage(); return false;">
+<a href="cse.html" onclick="openPage('cse.html'); return false;">
 CSE
 </a>
 </div>
 <div class="branch-link">
-<a href="cse.html" onclick="openPage('cse.html'); return false;">
+<a href="ece.html" onclick="openPage('ece.html'); return false;">
 ECE
 </a>
 </div>
 <div class="branch-link">
-<a href="ece.html" onclick="opwnPage('ece.html'); return false;">
+<a href="eee.html" onclick="opwnPage('eee.html'); return false;">
 EEE
 </a>
 </div>
 <div class="branch-link">
-<a href="eee.html" onclick="openPage('eee.html'); return false;">
+<a href="civil.html" onclick="openPage('civil.html'); return false;">
 CIVIL
 </a>
 </div>
-<div class="branch-link">
-<a href="eee.html" onclick="openPage('eee.html'); return false;">
-</div>
+
 <!-- RIGHT PANEL -->
  <div class="right-panel" id="rightPanel">
 <!-- HOME CONTENT -->
@@ -223,7 +221,7 @@ document.getElementById("homeContent").style.display = "flex";
 function OpenPage(Page) {
 const frame = document.getElementById("contentFrame");
 frame.style.display = "none";
-frame.src = "";
+frame.src = page;
 document.getElementById("homeContent").style.display = "none";
 }
 </script>
