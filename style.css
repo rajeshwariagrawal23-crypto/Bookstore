@@ -289,4 +289,26 @@ a:hover {
     table {
         font-size: 13px;
     }
+    .form-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .form-row label {
+        width: auto;
+        text-align: left;
+    }
+    .form-row input {
+        width: 100%;
+    }
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    .form-box,
+    .login-box {
+        padding: 16px;
+    }
+
+
 }
