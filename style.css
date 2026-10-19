@@ -7,7 +7,7 @@
    --accent: #D4B477;
    --background: #F8F5EF;
    --surface: #FFFFFF;
-   --tezt: #292521;
+   --text: #292521;
    --muted: #746C64;
    --border: #E9E2D7;
 }
@@ -67,17 +67,16 @@ body {
 /* ==============================
    NAVIGATION BAR
    ============================== */
-
 .navbar {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #7b2cbf;
+    background: #4A172C;
     min-height: 50px;
 }
 
 .navbar a {
-    color: var(--primary);
+    color: #FFFFFF;
     text-decoration: none;
     padding: 14px 25px;
     font-weight: bold;
@@ -85,7 +84,8 @@ body {
 }
 
 .navbar a:hover {
-    background: var(--primary-hover);
+    background: #351020;
+    color: #D4B477;
 }
 
 /* ==============================
