@@ -329,3 +329,37 @@ a:hover {
 
 
 }
+
+/* Cart quantity controls */
+.quantity-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.quantity-btn {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #4A172C;
+    border-radius: 5px;
+    background-color: #4A172C;
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quantity-btn:hover {
+    background-color: #351020;
+}
+
+.quantity-value {
+    min-width: 20px;
+    text-align: center;
+    font-weight: 600;
+}
+
