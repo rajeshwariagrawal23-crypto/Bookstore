@@ -1,151 +1,587 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Registration Form</title>
-<link rel="stylesheet" href="style.css">
-  
-<!--<style>
-body {
-font-family: Arial;
-background-color: #f5f5f5;
-}
-.form-box {
-width: 500px;
-margin: 30px auto;
-padding: 25px;
-background-color: white;
-border: 2px solid black;
-}
-h1 {
-text-align: center;
-background-color: #6FA8D0;padding: 10px;
-}
-label {
-display: inline-block;
-width: 150px;
-margin-bottom: 15px;
-}
-input[type="text"],
-input[type="password"],
-input[type="email"],
-textarea {
-padding: 6px;
-width: 250px;
-}
-textarea {
-height: 70px;
-}
-input[type="submit"],
-input[type="reset"] {
-padding: 8px 20px;
-margin: 10px;
-}
-.buttons {
-text-align: center;
-}
-</style>-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration | GL Bajaj Bookstore</title>
+
+    <style>
+        :root {
+            --primary: #4A172C;
+            --primary-hover: #351020;
+            --gold: #D4B477;
+            --background: #F8F5EF;
+            --white: #FFFFFF;
+            --text: #292521;
+            --muted: #746C64;
+            --border: #E9E2D7;
+            --error: #B42318;
+            --success: #18794E;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 28px 16px;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        .form-box {
+            width: 100%;
+            max-width: 650px;
+            margin: 0 auto;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 8px 28px rgba(41, 37, 33, 0.08);
+        }
+
+        .form-header {
+            background: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 24px 20px;
+            border-bottom: 4px solid var(--gold);
+        }
+
+        .form-header h1 {
+            margin: 0;
+            font-size: 25px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .form-header p {
+            margin: 7px 0 0;
+            color: #F0E6E8;
+            font-size: 14px;
+        }
+
+        form {
+            padding: 26px;
+        }
+
+        .form-group {
+            margin-bottom: 19px;
+        }
+
+        .form-group > label,
+        .field-label {
+            display: block;
+            margin-bottom: 7px;
+            font-size: 14px;
+            font-weight: 650;
+            color: var(--primary);
+        }
+
+        .required {
+            color: var(--error);
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="tel"],
+        input[type="date"],
+        textarea,
+        select {
+            display: block;
+            width: 100%;
+            min-height: 43px;
+            padding: 10px 12px;
+            border: 1px solid #D8D0C6;
+            border-radius: 6px;
+            background: #FFFFFF;
+            color: var(--text);
+            font: inherit;
+            font-size: 14px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        textarea {
+            min-height: 90px;
+            resize: vertical;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(74, 23, 44, 0.10);
+        }
+
+        .hint {
+            display: block;
+            margin-top: 5px;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .password-strength {
+            margin-top: 6px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .choice-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 20px;
+            padding: 4px 0;
+        }
+
+        .choice {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .choice input {
+            accent-color: var(--primary);
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 26px;
+        }
+
+        button {
+            min-width: 135px;
+            padding: 12px 20px;
+            border: 1px solid var(--primary);
+            border-radius: 6px;
+            font: inherit;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .submit-btn {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .submit-btn:hover {
+            background: var(--primary-hover);
+        }
+
+        .reset-btn {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        .reset-btn:hover {
+            background: #F1EAE0;
+        }
+
+        .message {
+            display: none;
+            margin: 0 26px 24px;
+            padding: 12px 14px;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .message.error {
+            display: block;
+            color: var(--error);
+            background: #FEF3F2;
+            border: 1px solid #FECDCA;
+        }
+
+        .message.success {
+            display: block;
+            color: var(--success);
+            background: #ECFDF3;
+            border: 1px solid #ABEFC6;
+        }
+
+        .form-footer {
+            padding: 15px 20px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            background: #FCFAF7;
+            font-size: 12px;
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 14px 9px;
+            }
+
+            form {
+                padding: 20px 16px;
+            }
+
+            .form-header h1 {
+                font-size: 21px;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+
+            .choice-group {
+                gap: 12px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-<div class="form-box">
-<h1>Registration Form</h1>
-<form>
-<label>Name:</label>
-<input type="text" name="name">
-<br>
-<label>Password:</label>
-<input type="password" name="password">
-<br>
-<label>E-mail ID:</label>
-<input type="email" name="email">
-<br>
-<label>Phone Number:</label>
-<input type="text" name="phone">
-<br>
-<label>Sex:</label>
-<input type="radio" name="sex" value="Male">Male
-<input type="radio" name="sex" value="Female">
-Female
-<br><br>
-<label>Date of Birth:</label>
-<select name="day">
-<option>Day</option>
-<option>1</option>
-<option>2</option>
-<option>3</option>
-<option>4</option>
-<option>5</option>
-<option>6</option>
-<option>7</option>
-<option>8</option>
-<option>9</option>
-<option>10</option>
-<option>11</option>
-<option>12</option>
-<option>13</option>
-<option>14</option>
-<option>15</option>
-<option>16</option>
-<option>17</option>
-<option>18</option>
-<option>19</option>
-<option>20</option>
-<option>21</option>
-<option>22</option>
-<option>23</option>
-<option>24</option>
-<option>25</option>
-<option>26</option>
-<option>27</option>
-<option>28</option>
-<option>29</option>
-<option>30</option>
-<option>31</option>
-</select>
-<select name="month">
-<option>Month</option>
-<option>January</option>
-<option>February</option>
-<option>March</option>
-<option>April</option>
-<option>May</option>
-<option>June</option>
-<option>July</option>
-<option>August</option>
-<option>September</option>
-<option>October</option>
-<option>November</option>
-<option>December</option>
-</select><select name="year">
-<option>Year</option>
-<option>2000</option>
-<option>2001</option>
-<option>2002</option>
-<option>2003</option>
-<option>2004</option>
-<option>2005</option>
-<option>2006</option>
-<option>2007</option>
-<option>2008</option>
-</select>
-<br><br>
-<label>Languages Known:</label>
-<input type="checkbox" name="language" value="English">
-English
-<input type="checkbox" name="language" value="Telugu">
-Telugu
-<input type="checkbox" name="language" value="Hindi">
-Hindi
-<input type="checkbox" name="language" value="Tamil">
-Tamil
-<br><br>
-<label>Address:</label>
-<textarea name="address"></textarea>
-<br><br>
-<div class="buttons">
-<input type="submit" value="Submit">
-<input type="reset" value="Reset">
-</div>
-</form>
-</div>
+    <main class="form-box">
+        <header class="form-header">
+            <h1>Registration</h1>
+            <p>Create your GL Bajaj Bookstore account</p>
+        </header>
+
+        <form id="registrationForm" novalidate>
+
+            <div class="form-group">
+                <label for="name">
+                    Full Name <span class="required">*</span>
+                </label>
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Enter your full name"
+                    minlength="3"
+                    maxlength="60"
+                    autocomplete="name"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="email">
+                    E-mail ID <span class="required">*</span>
+                </label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="you@example.com"
+                    maxlength="254"
+                    autocomplete="email"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="phone">
+                    Phone Number <span class="required">*</span>
+                </label>
+                <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    placeholder="10-digit mobile number"
+                    inputmode="numeric"
+                    maxlength="10"
+                    pattern="[6-9][0-9]{9}"
+                    title="Enter a valid 10-digit Indian mobile number"
+                    autocomplete="tel-national"
+                    required
+                >
+                <span class="hint">
+                    Enter a 10-digit Indian mobile number starting with 6, 7, 8 or 9.
+                </span>
+            </div>
+
+            <div class="form-group">
+                <label for="password">
+                    Password <span class="required">*</span>
+                </label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Create a strong password"
+                    minlength="8"
+                    maxlength="64"
+                    autocomplete="new-password"
+                    required
+                >
+                <span class="hint">
+                    Use 8–64 characters, including uppercase and lowercase
+                    letters, a number and a special character. No spaces.
+                </span>
+                <div id="passwordStrength" class="password-strength"
+                     aria-live="polite"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">
+                    Confirm Password <span class="required">*</span>
+                </label>
+                <input
+                    type="password"
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    placeholder="Re-enter your password"
+                    autocomplete="new-password"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <span class="field-label">
+                    Sex <span class="required">*</span>
+                </span>
+                <div class="choice-group">
+                    <label class="choice">
+                        <input type="radio" name="sex" value="Male" required>
+                        Male
+                    </label>
+                    <label class="choice">
+                        <input type="radio" name="sex" value="Female">
+                        Female
+                    </label>
+                    <label class="choice">
+                        <input type="radio" name="sex" value="Prefer not to say">
+                        Prefer not to say
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="dob">
+                    Date of Birth <span class="required">*</span>
+                </label>
+                <input
+                    type="date"
+                    id="dob"
+                    name="dob"
+                    autocomplete="bday"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <span class="field-label">Languages Known</span>
+                <div class="choice-group">
+                    <label class="choice">
+                        <input type="checkbox" name="language" value="English">
+                        English
+                    </label>
+                    <label class="choice">
+                        <input type="checkbox" name="language" value="Hindi">
+                        Hindi
+                    </label>
+                    <label class="choice">
+                        <input type="checkbox" name="language" value="Telugu">
+                        Telugu
+                    </label>
+                    <label class="choice">
+                        <input type="checkbox" name="language" value="Tamil">
+                        Tamil
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="address">
+                    Address <span class="required">*</span>
+                </label>
+                <textarea
+                    id="address"
+                    name="address"
+                    placeholder="Enter your complete address"
+                    minlength="10"
+                    maxlength="300"
+                    autocomplete="street-address"
+                    required
+                ></textarea>
+            </div>
+
+            <div class="buttons">
+                <button type="submit" class="submit-btn">
+                    REGISTER
+                </button>
+                <button type="reset" class="reset-btn">
+                    RESET
+                </button>
+            </div>
+        </form>
+
+        <div id="formMessage" class="message" role="status"
+             aria-live="polite"></div>
+
+        <footer class="form-footer">
+            GL Bajaj Bookstore
+        </footer>
+    </main>
+
+    <script>
+        const form = document.getElementById("registrationForm");
+        const password = document.getElementById("password");
+        const confirmPassword = document.getElementById("confirmPassword");
+        const phone = document.getElementById("phone");
+        const nameField = document.getElementById("name");
+        const dob = document.getElementById("dob");
+        const address = document.getElementById("address");
+        const message = document.getElementById("formMessage");
+        const strength = document.getElementById("passwordStrength");
+
+        // Prevent selecting a future date of birth.
+        dob.max = new Date().toLocaleDateString("en-CA");
+
+        function showMessage(text, type) {
+            message.textContent = text;
+            message.className = "message " + type;
+        }
+
+        function validPassword(value) {
+            return value.length >= 8 &&
+                   value.length <= 64 &&
+                   /[A-Z]/.test(value) &&
+                   /[a-z]/.test(value) &&
+                   /[0-9]/.test(value) &&
+                   /[^A-Za-z0-9\s]/.test(value) &&
+                   !/\s/.test(value);
+        }
+
+        // Live password-strength feedback.
+        password.addEventListener("input", function () {
+            const value = password.value;
+
+            if (!value) {
+                strength.textContent = "";
+            } else if (validPassword(value)) {
+                strength.textContent = "Password meets the requirements.";
+                strength.style.color = "#18794E";
+            } else {
+                strength.textContent =
+                    "Password needs uppercase, lowercase, number, special character and 8–64 characters.";
+                strength.style.color = "#B42318";
+            }
+        });
+
+        // Check password confirmation as the user types.
+        confirmPassword.addEventListener("input", function () {
+            if (confirmPassword.value &&
+                confirmPassword.value !== password.value) {
+                confirmPassword.setCustomValidity("Passwords do not match.");
+            } else {
+                confirmPassword.setCustomValidity("");
+            }
+        });
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+            message.className = "message";
+            message.textContent = "";
+
+            // Validate name.
+            const cleanName = nameField.value.trim();
+
+            if (cleanName.length < 3 || cleanName.length > 60 ||
+                !/^[\p{L}][\p{L}\s.'’-]*$/u.test(cleanName)) {
+                showMessage(
+                    "Enter a valid full name using letters and normal name punctuation.",
+                    "error"
+                );
+                nameField.focus();
+                return;
+            }
+
+            // Validate standard required fields and email.
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            // Validate Indian mobile number.
+            if (!/^[6-9]\d{9}$/.test(phone.value.trim())) {
+                showMessage(
+                    "Enter a valid 10-digit Indian mobile number.",
+                    "error"
+                );
+                phone.focus();
+                return;
+            }
+
+            // Validate password strength.
+            if (!validPassword(password.value)) {
+                showMessage(
+                    "Your password does not meet the strength requirements shown above.",
+                    "error"
+                );
+                password.focus();
+                return;
+            }
+
+            // Validate matching passwords.
+            if (password.value !== confirmPassword.value) {
+                showMessage(
+                    "Passwords do not match. Please confirm your password again.",
+                    "error"
+                );
+                confirmPassword.focus();
+                return;
+            }
+
+            // Validate the date.
+            const birthDate = new Date(dob.value + "T00:00:00");
+
+            if (!dob.value || Number.isNaN(birthDate.getTime()) ||
+                birthDate > new Date()) {
+                showMessage(
+                    "Please enter a valid date of birth that is not in the future.",
+                    "error"
+                );
+                dob.focus();
+                return;
+            }
+
+            // Validate address.
+            if (address.value.trim().length < 10) {
+                showMessage(
+                    "Please enter an address containing at least 10 characters.",
+                    "error"
+                );
+                address.focus();
+                return;
+            }
+
+            // Demonstration only: no account is created or stored.
+            showMessage(
+                "All validation checks passed! This demo form is valid, but account creation is not connected to a backend yet.",
+                "success"
+            );
+        });
+
+        form.addEventListener("reset", function () {
+            message.className = "message";
+            message.textContent = "";
+            strength.textContent = "";
+            confirmPassword.setCustomValidity("");
+        });
+    </script>
 </body>
 </html>
