@@ -112,7 +112,7 @@
     display: grid;
     grid-template-columns: 20% 80%;
     flex: 1;
-    min-height: 300px;
+    min-height: 0px;
   }
   /* LEFT SIDE */
   .left-panel {
@@ -205,6 +205,7 @@ display: none;
 .student-footer {
     width: 100%;
     flex-shrink: 0;
+    margin-top: auto;
     background: #4A172C;
     color: #FFFFFF;
     text-align: center;
@@ -378,11 +379,9 @@ name="contentFrame">
 </div>
 <script>
 /* OPEN LOGIN / REGISTRATION / CATALOGUE / CART */
-function openPage(page) {
-document.getElementById("homeContent").style.display = "none";
-const frame = document.getElementById("contentFrame");
-frame.style.display = "block";
-frame.src = page;
+
+function OpenPage(page) {
+    openPage(page);
 }
 /* HOME */
 function showHome() {
