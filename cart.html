@@ -1,59 +1,51 @@
-<!DOCTYPE html>
 
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <title>Cart</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart | GL Bajaj Bookstore</title>
     <link rel="stylesheet" href="style.css">
-  
 
-<!--<style>
-    body {
-        font-family: Arial;
-        background-color: #fff8f0;
-    }
+    <style>
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
 
-    h2 {
-        text-align: center;
-        color: #d96b20;
-    }
+        .quantity-btn {
+            width: 32px;
+            height: 32px;
+            border: 1px solid #4A172C;
+            border-radius: 5px;
+            background-color: #4A172C;
+            color: #FFFFFF;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-    table {
-        width: 80%;
-        margin: 20px auto;
-        border-collapse: collapse;
-        background-color: white;
-    }
+        .quantity-btn:hover {
+            background-color: #351020;
+        }
 
-    th, td {
-        border: 1px solid black;
-        padding: 10px;
-        text-align: center;
-    }
+        .quantity-value {
+            min-width: 20px;
+            text-align: center;
+            font-weight: 600;
+        }
 
-    th {
-        background-color: #f7b77f;
-    }
-
-    button {
-        padding: 6px 12px;
-        cursor: pointer;
-        border: 1px solid #555;
-    }
-
-    .remove {
-        background-color: #ff9999;
-    }
-
-    .clear {
-        display: block;
-        margin: 20px auto;
-        padding: 10px 20px;
-        background-color: #f7b77f;
-    }
-</style>-->
-
-
+        .remove,
+        .clear {
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
@@ -61,32 +53,30 @@
 <h2>Shopping Cart</h2>
 
 <table>
+    <thead>
+        <tr>
+            <th>Book</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+            <th>Remove</th>
+        </tr>
+    </thead>
 
+    <tbody id="cartItems"></tbody>
 
-<tr>
-    <th>Book</th>
-    <th>Price</th>
-    <th>Quantity</th>
-    <th>Total</th>
-    <th>Remove</th>
-</tr>
-
-<tbody id="cartItems"></tbody>
-
-<tr>
-    <th colspan="3">Grand Total</th>
-    <th colspan="2" id="grandTotal">RS.0</th>
-</tr>
-
-
+    <tfoot>
+        <tr>
+            <th colspan="3">Grand Total</th>
+            <th colspan="2" id="grandTotal">RS.0</th>
+        </tr>
+    </tfoot>
 </table>
 
 <button class="clear" onclick="clearCart()">Clear Cart</button>
 
 <script>
-
 function showCart() {
-
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
     let cartItems = document.getElementById("cartItems");
@@ -95,53 +85,53 @@ function showCart() {
     cartItems.innerHTML = "";
 
     if (cart.length === 0) {
-
         cartItems.innerHTML =
             '<tr><td colspan="5">Cart is Empty</td></tr>';
 
-        document.getElementById("grandTotal").innerHTML = "RS.0";
-
+        document.getElementById("grandTotal").textContent = "RS.0";
         return;
     }
 
     cart.forEach(function(item, index) {
+        let price = Number(item.price) || 0;
+        let quantity = Math.max(1, Number(item.quantity) || 1);
+        let total = price * quantity;
 
-        let total = item.price * item.quantity;
-
-        grandTotal = grandTotal + total;
+        grandTotal += total;
 
         cartItems.innerHTML += `
             <tr>
                 <td>${item.name}</td>
-                <td>RS.${item.price}</td>
-              
-                
-<td>
-    <div class="quantity-control">
-        <button class="quantity-btn"
-                onclick="changeQuantity(${index}, -1)"
-                aria-label="Decrease quantity">−</button>
+                <td>RS.${price}</td>
+                <td>
+                    <div class="quantity-control">
+                        <button type="button"
+                                class="quantity-btn"
+                                onclick="changeQuantity(${index}, -1)"
+                                aria-label="Decrease quantity">−</button>
 
-        <span class="quantity-value">${item.quantity}</span>
+                        <span class="quantity-value">${quantity}</span>
 
-        <button class="quantity-btn"
-                onclick="changeQuantity(${index}, 1)"
-                aria-label="Increase quantity">+</button>
-    </div>
-</td>
-
+                        <button type="button"
+                                class="quantity-btn"
+                                onclick="changeQuantity(${index}, 1)"
+                                aria-label="Increase quantity">+</button>
+                    </div>
+                </td>
                 <td>RS.${total}</td>
                 <td>
-                    <button class="remove"
-                    onclick="removeItem(${index})">
-                    Remove
+                    <button type="button" class="remove"
+                            onclick="removeItem(${index})">
+                        Remove
                     </button>
                 </td>
             </tr>
         `;
     });
 
-    document.getElementById("grandTotal").innerHTML =
+    document.getElementById("grandTotal").textContent =
+        "RS." + grandTotal;
+}
 
 function changeQuantity(index, change) {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -150,24 +140,21 @@ function changeQuantity(index, change) {
         return;
     }
 
-    cart[index].quantity += change;
+    let quantity = Number(cart[index].quantity) || 1;
+    let newQuantity = quantity + change;
 
-    // Keep the minimum quantity at 1
-    if (cart[index].quantity < 1) {
-        cart[index].quantity = 1;
+    if (newQuantity < 1) {
+        return;
     }
+
+    cart[index].quantity = newQuantity;
 
     localStorage.setItem("cart", JSON.stringify(cart));
 
-    // Refresh quantities and prices
     showCart();
 }
-        "RS." + grandTotal;
-}
-
 
 function removeItem(index) {
-
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
     cart.splice(index, 1);
@@ -177,17 +164,12 @@ function removeItem(index) {
     showCart();
 }
 
-
 function clearCart() {
-
     localStorage.removeItem("cart");
-
     showCart();
 }
 
-
 showCart();
-
 </script>
 
 </body>
