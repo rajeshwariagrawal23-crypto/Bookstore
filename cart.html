@@ -114,9 +114,22 @@ function showCart() {
             <tr>
                 <td>${item.name}</td>
                 <td>RS.${item.price}</td>
-                <td>
-                    ${item.quantity}
-                </td>
+              
+                
+<td>
+    <div class="quantity-control">
+        <button class="quantity-btn"
+                onclick="changeQuantity(${index}, -1)"
+                aria-label="Decrease quantity">−</button>
+
+        <span class="quantity-value">${item.quantity}</span>
+
+        <button class="quantity-btn"
+                onclick="changeQuantity(${index}, 1)"
+                aria-label="Increase quantity">+</button>
+    </div>
+</td>
+
                 <td>RS.${total}</td>
                 <td>
                     <button class="remove"
@@ -129,6 +142,26 @@ function showCart() {
     });
 
     document.getElementById("grandTotal").innerHTML =
+
+function changeQuantity(index, change) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    if (!cart[index]) {
+        return;
+    }
+
+    cart[index].quantity += change;
+
+    // Keep the minimum quantity at 1
+    if (cart[index].quantity < 1) {
+        cart[index].quantity = 1;
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    // Refresh quantities and prices
+    showCart();
+}
         "RS." + grandTotal;
 }
 
