@@ -379,9 +379,11 @@ name="contentFrame">
 </div>
 <script>
 /* OPEN LOGIN / REGISTRATION / CATALOGUE / CART */
-
-function OpenPage(page) {
-    openPage(page);
+function OpenPage(Page) {
+    const frame = document.getElementById("contentFrame");
+    frame.style.display = "none";
+    frame.src = page;
+    document.getElementById("homeContent").style.display = "none";
 }
 /* HOME */
 function showHome() {
