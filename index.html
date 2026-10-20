@@ -377,29 +377,34 @@ name="contentFrame">
 </iframe></div>
 </div>
 </div>
+
 <script>
-/* OPEN LOGIN / REGISTRATION / CATALOGUE / CART */
-function OpenPage(Page) {
+/* OPEN LOGIN / REGISTRATION / CATALOGUE / CART / BRANCH PAGES */
+function openPage(page) {
     const frame = document.getElementById("contentFrame");
-    frame.style.display = "none";
+    const homeContent = document.getElementById("homeContent");
+
+    homeContent.style.display = "none";
+    frame.style.display = "block";
     frame.src = page;
-    document.getElementById("homeContent").style.display = "none";
 }
+
 /* HOME */
 function showHome() {
-const frame = document.getElementById("contentFrame");
-frame.style.display = "none";
-frame.src = "";
-document.getElementById("homeContent").style.display = "flex";
+    const frame = document.getElementById("contentFrame");
+
+    frame.src = "";
+    frame.style.display = "none";
+
+    document.getElementById("homeContent").style.display = "flex";
 }
-/* CSE / ECE / EEE / CIVIL */
-function OpenPage(Page) {
-const frame = document.getElementById("contentFrame");
-frame.style.display = "none";
-frame.src = page;
-document.getElementById("homeContent").style.display = "none";
+
+/* COMPATIBILITY WITH ANY EXISTING CAPITALIZED CALLS */
+function OpenPage(page) {
+    openPage(page);
 }
 </script>
+
 <footer class="student-footer">
     <p class="student-name">Rajeshwari Agrawal</p>
     <p>Roll No.: 2502920110294</p>
